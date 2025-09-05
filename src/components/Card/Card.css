@@ -1,0 +1,111 @@
+/* src/components/Card/Card.css */
+
+.card-container {
+  width: 300px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #2a2a2a;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: rgba(255, 255, 255, 0.87);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+
+  /* Adiciona uma transição suave para a propriedade transform */
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Efeito de expansão no hover */
+.card-container:hover {
+  transform: scale(1.05);
+  z-index: 10; /* Garante que o card fique na frente de outros elementos */
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  min-height: 40px;
+}
+
+.card-title {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.card-body {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Estilos para o novo bloco de detalhes */
+.card-details {
+  padding: 0 15px; /* Adiciona preenchimento lateral */
+  overflow: hidden;
+  
+  /* Esconde o conteúdo por padrão */
+  max-height: 0;
+  opacity: 0;
+  
+  /* Define a transição para as propriedades */
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+
+/* Revela o bloco de detalhes quando o mouse está sobre o card */
+.card-container:hover .card-details {
+  max-height: 200px; /* Altura máxima para revelar o conteúdo */
+  opacity: 1;
+  padding: 15px; /* Adiciona preenchimento vertical na revelação */
+}
+
+.card-details p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.card-details p strong {
+  color: #a0a0a0;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+  border-top: 1px solid #333;
+  margin-top: auto;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.icon-button:hover {
+  color: #646cff;
+}
