@@ -1,0 +1,98 @@
+/* Estilização geral da barra de menu */
+.menu-bar {
+  background-color: #242424;
+  padding: 0.5rem 2rem;
+  border-bottom: 1px solid #3a3a3a;
+  width: 100%;
+  box-sizing: border-box; 
+  position: fixed; /* Fixa o menu no topo */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.menu-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Seções do menu (esquerda, meio, direita) */
+.menu-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-section.left {
+  justify-content: flex-start;
+}
+
+.menu-section.middle {
+  flex-grow: 1; /* Faz a seção do meio ocupar o espaço disponível */
+  display: flex;
+  justify-content: center;
+}
+
+.menu-section.right {
+  justify-content: flex-end;
+}
+
+/* Botões do menu */
+.menu-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.87);
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0.6em 1em;
+  border-radius: 8px;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.menu-button:hover {
+  background-color: #3a3a3a;
+  color: #ffffff;
+}
+
+.menu-icon {
+  font-size: 1.2em;
+}
+
+/* Barra de pesquisa */
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.6em 1em 0.6em 2.5em; /* Espaço para o ícone */
+  border-radius: 20px;
+  border: 1px solid #4a4a4a;
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 1em;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 5px #646cff;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1em;
+  color: #888;
+}
