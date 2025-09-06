@@ -27,26 +27,28 @@ const Card: React.FC<CardProps> = ({
 }) => {
     return (
         <div className="card-container">
-            <div className="card-header">
-                <h2 className="card-title">{title}</h2>
-                <div className="card-rating">
-                    <FaStar color="#FFD700" />
-                    <span>{rating}</span>
+            <div className="card-content-wrapper">
+                <div className="card-header">
+                    <h2 className="card-title">{title}</h2>
+                    <div className="card-rating">
+                        <FaStar color="#FFD700" />
+                        <span>{rating}</span>
+                    </div>
                 </div>
-            </div>
 
-            <div className="card-body">
-                <img src={imageUrl} alt={title} className="card-image" />
-            </div>
+                <div className="card-body">
+                    <img src={imageUrl} alt={title} className="card-image" />
+                </div>
 
-            {/* Novo bloco para os detalhes que aparecerão no hover */}
-            <div className="card-details">
-                <p><strong>Gênero:</strong> {genre}</p>
-                <p><strong>Lançamento:</strong> {releaseDate}</p>
-                <p><strong>Duração:</strong> {duration}</p>
-                <p><strong>Autor:</strong> {author}</p>
-                <p><strong>País:</strong> {country}</p>
-                <p><strong>Bilheteria:</strong> {boxOffice}</p>
+                {/* Novo bloco para os detalhes que aparecerão no hover */}
+                <div className="card-details">
+                    {genre && <p><strong>Gênero:</strong> <span>{genre}</span></p>}
+                    {releaseDate && <p><strong>Lançamento:</strong> <span>{releaseDate}</span></p>}
+                    {duration && <p><strong>Duração:</strong> <span>{duration}</span></p>}
+                    {author && <p><strong>Autor:</strong> <span>{author}</span></p>}
+                    {country && <p><strong>País:</strong> <span>{country}</span></p>}
+                    {boxOffice && <p><strong>Bilheteria:</strong> <span>{boxOffice}</span></p>}
+                </div>
             </div>
 
             <div className="card-footer">

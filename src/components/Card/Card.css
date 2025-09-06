@@ -1,10 +1,10 @@
 /* src/components/Card/Card.css */
 
 .card-container {
-  width: 300px;
+  width: 200px; /* Largura do card diminuída */
   border: 1px solid #333;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: hidden; /* Garante que o conteúdo interno respeite as bordas arredondadas */
   background-color: #2a2a2a;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: rgba(255, 255, 255, 0.87);
@@ -12,28 +12,32 @@
   margin: 20px;
   display: flex;
   flex-direction: column;
+  position: relative; /* Necessário para o posicionamento absoluto dos detalhes */
 
   /* Adiciona uma transição suave para a propriedade transform */
-  transition: transform 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 /* Efeito de expansão no hover */
 .card-container:hover {
-  transform: scale(1.05);
   z-index: 10; /* Garante que o card fique na frente de outros elementos */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); /* Sombra mais pronunciada no hover */
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  min-height: 40px;
+  padding: 10px; /* Padding do header diminuído */
+  min-height: 30px; /* Altura mínima diminuída */
 }
 
 .card-title {
-  font-size: 1.2em;
+  font-size: 1em; /* Tamanho da fonte do título diminuído */
   margin: 0;
+  white-space: nowrap; /* Impede que o título quebre em várias linhas */
+  overflow: hidden; /* Esconde o texto que transborda */
+  text-overflow: ellipsis; /* Adiciona "..." no final do texto cortado */
 }
 
 .card-rating {
@@ -56,49 +60,77 @@
   object-fit: cover;
 }
 
+/* Novo wrapper para o conteúdo que recebe o overlay */
+.card-content-wrapper {
+  position: relative; /* Contexto de posicionamento para o overlay de detalhes */
+  flex: 1; /* Faz com que este wrapper ocupe o espaço disponível, empurrando o footer para baixo */
+}
+
 /* Estilos para o novo bloco de detalhes */
 .card-details {
-  padding: 0 15px; /* Adiciona preenchimento lateral */
-  overflow: hidden;
-  
-  /* Esconde o conteúdo por padrão */
-  max-height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(42, 42, 42, 0.95); /* Fundo semitransparente para o efeito de overlay */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Alinha os itens à esquerda */
+  padding: 15px; /* Aumenta o espaçamento interno */
+  text-align: left; /* Alinha o texto à esquerda */
+  box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
+
+  /* Esconde por padrão e prepara para a animação */
   opacity: 0;
-  
-  /* Define a transição para as propriedades */
-  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out;
+  visibility: hidden;
+  transform: scale(0.9); /* Efeito de zoom ao aparecer */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s;
 }
 
 /* Revela o bloco de detalhes quando o mouse está sobre o card */
 .card-container:hover .card-details {
-  max-height: 200px; /* Altura máxima para revelar o conteúdo */
   opacity: 1;
-  padding: 15px; /* Adiciona preenchimento vertical na revelação */
+  visibility: visible;
+  transform: scale(1); /* Efeito de zoom ao aparecer */
+  transition-delay: 0s;
 }
 
 .card-details p {
+  display: flex;
   margin: 5px 0;
-  font-size: 0.9em;
+  font-size: 0.85em; /* Aumenta a legibilidade */
+  line-height: 1.4; /* Melhora o espaçamento entre linhas */
 }
 
 .card-details p strong {
-  color: #a0a0a0;
+  color: #b0b0b0; /* Deixa o rótulo um pouco mais claro */
+  width: 80px; /* Largura fixa para o rótulo */
+  margin-right: 10px; /* Espaço entre o rótulo e o valor */
+  font-weight: 600;
+  flex-shrink: 0; /* Impede que o rótulo encolha */
+}
+
+.card-details p span {
+  /* O valor agora pode quebrar a linha corretamente */
+  word-break: break-word;
 }
 
 .card-footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 15px;
+  padding: 10px; /* Padding do footer diminuído */
   border-top: 1px solid #333;
-  margin-top: auto;
 }
 
 .icon-button {
   background: none;
   border: none;
-  color: white;
-  font-size: 1.5em;
+  color: rgba(255, 255, 255, 0.87); /* Cor ajustada para o padrão */
+  font-size: 1.2em; /* Tamanho dos ícones diminuído */
   cursor: pointer;
   transition: color 0.2s;
   padding: 5px;
