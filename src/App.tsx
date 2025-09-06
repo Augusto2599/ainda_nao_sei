@@ -1,11 +1,21 @@
+import { useState } from 'react';
 import './App.css';
 import Card from './components/Card/Card';
 import MenuBar from './components/MenuBar/MenuBar';
+import AuthPopup from './components/AuthPopup/AuthPopup';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 function App() {
+  const [popupMode, setPopupMode] = useState<'signIn' | 'signUp' | null>(null);
+
+  const handleSignInClick = () => setPopupMode('signIn');
+  const handleSignUpClick = () => setPopupMode('signUp');
+  const handleClosePopup = () => setPopupMode(null);
+  const handleSwitchPopupMode = (newMode: 'signIn' | 'signUp') => setPopupMode(newMode);
+
+  // ... (o restante do seu código de dados dos cards continua aqui, sem alterações)
   const popularCardData = [
     { title: 'Interstellar', rating: 9.5, imageUrl: 'https://upload.wikimedia.org/wikipedia/pt/3/3a/Interstellar_Filme.png', genre: 'Ação', releaseDate: '2023-01-15', duration: '2h 10min', author: 'Diretor Famoso', country: 'EUA', boxOffice: '$300 Milhões' },
     { title: 'Formula 1', rating: 9.2, imageUrl: 'https://upload.wikimedia.org/wikipedia/pt/c/c1/F1.webp', genre: 'Drama', releaseDate: '2022-03-22', duration: '5 Temporadas', author: 'Criador Renomado', country: 'Reino Unido', boxOffice: 'N/A' },
@@ -139,7 +149,14 @@ function App() {
 
   return (
     <div className="app-container">
-      <MenuBar />
+      <MenuBar onSignInClick={handleSignInClick} onSignUpClick={handleSignUpClick} />
+      {popupMode && (
+          <AuthPopup 
+              mode={popupMode} 
+              onClose={handleClosePopup}
+              onSwitchMode={handleSwitchPopupMode}
+          />
+      )}
       <main className="main-content">
         <h1>Home</h1>
         <CardRow title="Populares" data={popularCardData} />
