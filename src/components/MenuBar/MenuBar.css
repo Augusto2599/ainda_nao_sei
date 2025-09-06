@@ -29,16 +29,18 @@
 
 .menu-section.left {
   justify-content: flex-start;
+  flex: 1; /* Garante que esta seção ocupe espaço igual à da direita */
 }
 
 .menu-section.middle {
-  flex-grow: 1; /* Faz a seção do meio ocupar o espaço disponível */
+  flex-grow: 1; /* Mantém a flexibilidade */
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Centraliza a barra de pesquisa dentro da seção */
 }
 
 .menu-section.right {
   justify-content: flex-end;
+  flex: 1; /* Garante que esta seção ocupe espaço igual à da esquerda */
 }
 
 /* Botões do menu */
@@ -59,6 +61,11 @@
 .menu-button:hover {
   background-color: #3a3a3a;
   color: #ffffff;
+}
+
+.menu-button:focus,
+.menu-button:focus-visible {
+  outline: none;
 }
 
 .menu-icon {
