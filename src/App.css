@@ -18,12 +18,54 @@
   padding-bottom: 2rem;
 }
 
+.card-row {
+  margin-bottom: 2rem;
+}
+
+.card-row h2 {
+  font-size: 1.2em;
+  text-align: left;
+  margin-bottom: 1rem;
+  padding: 0rem;
+}
+
+.cards-carousel {
+  padding: 0 40px;
+}
+
 .cards-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 2rem;
+  /* This class is no longer used for the carousel rows. */
+}
+
+.slick-list {
+  /* Add some padding to prevent box-shadow from being cut off on hover */
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  overflow: visible;
+}
+
+.slick-slide > div {
+  padding: 0 10px;
+}
+
+.slick-slide .card-container {
+  margin: 0 auto;
+}
+
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.slick-prev {
+  left: -5px;
+}
+.slick-next {
+  right: -5px;
 }
 
 .footer {
