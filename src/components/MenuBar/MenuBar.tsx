@@ -1,23 +1,28 @@
 import { FaHome, FaUsers, FaImages, FaSearch, FaUserCircle } from 'react-icons/fa';
 import './MenuBar.css';
 
-function MenuBar() {
+interface MenuBarProps {
+    onSignInClick: () => void;
+    onSignUpClick: () => void;
+}
+
+const MenuBar: React.FC<MenuBarProps> = ({ onSignInClick, onSignUpClick }) => {
     return (
         <header className="menu-bar">
             <nav className="menu-nav">
                 <div className="menu-section left">
-                    <button className="menu-button">
+                    <a href="/index.html" className="menu-button">
                         <FaHome className="menu-icon" />
                         <span>Home</span>
-                    </button>
-                    <button className="menu-button">
+                    </a>
+                    <a href="#" className="menu-button">
                         <FaUsers className="menu-icon" />
                         <span>Comunidade</span>
-                    </button>
-                    <button className="menu-button">
+                    </a>
+                    <a href="#" className="menu-button">
                         <FaImages className="menu-icon" />
                         <span>Galeria</span>
-                    </button>
+                    </a>
                 </div>
 
                 <div className="menu-section middle">
@@ -28,11 +33,11 @@ function MenuBar() {
                 </div>
 
                 <div className="menu-section right">
-                    <button className="menu-button">
+                    <button className="menu-button" onClick={onSignInClick}>
                         <FaUserCircle className="menu-icon" />
                         <span>Sign In</span>
                     </button>
-                    <button className="menu-button">
+                    <button className="menu-button" onClick={onSignUpClick}>
                         <span>Sign Up</span>
                     </button>
                 </div>

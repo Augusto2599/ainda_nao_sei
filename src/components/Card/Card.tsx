@@ -29,7 +29,7 @@ const Card: React.FC<CardProps> = ({
         <div className="card-container">
             <div className="card-content-wrapper">
                 <div className="card-header">
-                    <h2 className="card-title">{title}</h2>
+                    <h3 className="card-title">{title}</h3>
                     <div className="card-rating">
                         <FaStar color="#FFD700" />
                         <span>{rating}</span>
