@@ -1,4 +1,4 @@
-import { FaHome, FaUsers, FaImages, FaSearch, FaUserCircle } from 'react-icons/fa';
+import { FaHome, FaUsers, FaImages, FaSearch, FaUserCircle, FaUserPlus } from 'react-icons/fa';
 import './MenuBar.css';
 
 interface MenuBarProps {
@@ -33,11 +33,12 @@ const MenuBar: React.FC<MenuBarProps> = ({ onSignInClick, onSignUpClick }) => {
                 </div>
 
                 <div className="menu-section right">
-                    <button className="menu-button" onClick={onSignInClick}>
-                        <FaUserCircle className="menu-icon" />
+                    <button className="menu-button signup-button" onClick={onSignInClick}>
+                        <FaUserCircle className="signup-icon" />
                         <span>Sign In</span>
                     </button>
-                    <button className="menu-button" onClick={onSignUpClick}>
+                    <button className="menu-button signup-button" onClick={onSignUpClick}>
+                        <FaUserPlus className="signup-icon" />
                         <span>Sign Up</span>
                     </button>
                 </div>
