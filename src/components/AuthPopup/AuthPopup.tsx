@@ -16,7 +16,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ mode, onClose, onSwitchMode }) =>
             <div className="popup-container" onClick={(e) => e.stopPropagation()}>
                 <div className="popup-header">
                     <h2 className="popup-title">{isSignIn ? 'Welcome Back!' : 'Create Your Account'}</h2>
-                    <button className="popup-close-button" onClick={onClose}>&times;</button>
+                    
                 </div>
                 
                 <div className="social-login">
