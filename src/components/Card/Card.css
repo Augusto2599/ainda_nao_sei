@@ -1,7 +1,7 @@
 /* src/components/Card/Card.css */
 
 .card-container {
-  width: 200px; /* Largura do card diminuída */
+  width: 240px; /* Largura do card diminuída */
   border: 1px solid #333;
   border-radius: 10px;
   overflow: hidden; /* Garante que o conteúdo interno respeite as bordas arredondadas */
