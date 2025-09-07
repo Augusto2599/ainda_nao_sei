@@ -63,3 +63,8 @@
 .post-action-button:hover {
     background-color: #3a3a3a;
 }
+
+.post-action-button.liked {
+    color: #646cff;
+    font-weight: bold;
+}

@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import CreatePost from '../../components/CreatePost/CreatePost';
-// A linha abaixo foi corrigida
 import Post, { type PostProps } from '../../components/Post/Post';
 import SideBar from '../../components/SideBar/SideBar';
 import './Community.css';
 
-// Dados de exemplo iniciais
-const initialPosts: PostProps[] = [
+const initialPosts: Omit<PostProps, 'onLike'>[] = [
     {
         id: 3,
         author: 'Carlos',
@@ -34,18 +32,28 @@ const initialPosts: PostProps[] = [
 ];
 
 const Community = () => {
-    const [posts, setPosts] = useState<PostProps[]>(initialPosts);
+    const [posts, setPosts] = useState(initialPosts);
 
     const handleCreatePost = (content: string) => {
-        const newPost: PostProps = {
-            id: Date.now(), // ID único baseado no tempo
-            author: 'Usuário Atual', // Nome do usuário logado (placeholder)
+        const newPost = {
+            id: Date.now(),
+            author: 'Usuário Atual',
             time: 'Agora',
             content: content,
             likes: 0,
             comments: 0,
         };
-        setPosts([newPost, ...posts]); // Adiciona o novo post no início da lista
+        setPosts([newPost, ...posts]);
+    };
+
+    const handleLikePost = (postId: number) => {
+        setPosts(posts.map(post => {
+            if (post.id === postId) {
+                // Simplesmente incrementa. Uma implementação real poderia verificar se já foi curtido.
+                return { ...post, likes: post.likes + 1 };
+            }
+            return post;
+        }));
     };
 
     return (
@@ -54,7 +62,11 @@ const Community = () => {
             <div className="community-feed">
                 <CreatePost onPost={handleCreatePost} />
                 {posts.map((post) => (
-                    <Post key={post.id} {...post} />
+                    <Post
+                        key={post.id}
+                        {...post}
+                        onLike={handleLikePost} // Passa a função para o componente Post
+                    />
                 ))}
             </div>
         </div>
