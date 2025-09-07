@@ -46,3 +46,9 @@
     font-size: 0.95em;
     color: #b0b0b0;
 }
+
+.sidebar-item.filter-option.active {
+    background-color: #3a3a3a;
+    color: #646cff;
+    font-weight: bold;
+}

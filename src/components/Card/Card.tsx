@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Importar o Link
 import './Card.css';
 import { FaStar, FaHeart, FaShareAlt, FaBookmark } from 'react-icons/fa';
 
 interface CardProps {
+    id: string; // Adicionar id
     title: string;
     rating: number;
     imageUrl: string;
@@ -15,6 +17,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({
+    id, // Adicionar id
     title,
     rating,
     imageUrl,
@@ -26,7 +29,7 @@ const Card: React.FC<CardProps> = ({
     boxOffice,
 }) => {
     return (
-        <div className="card-container">
+        <Link to={`/details/${id}`} className="card-container"> {/* Envolver com Link */}
             <div className="card-content-wrapper">
                 <div className="card-header">
                     <h3 className="card-title">{title}</h3>
@@ -40,7 +43,6 @@ const Card: React.FC<CardProps> = ({
                     <img src={imageUrl} alt={title} className="card-image" />
                 </div>
 
-                {/* Novo bloco para os detalhes que aparecerão no hover */}
                 <div className="card-details">
                     {genre && <p><strong>Gênero:</strong> <span>{genre}</span></p>}
                     {releaseDate && <p><strong>Lançamento:</strong> <span>{releaseDate}</span></p>}
@@ -62,7 +64,7 @@ const Card: React.FC<CardProps> = ({
                     <FaBookmark />
                 </button>
             </div>
-        </div>
+        </Link>
     );
 };
 

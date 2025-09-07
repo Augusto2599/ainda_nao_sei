@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaHome, FaUsers, FaImages, FaSearch, FaUserCircle, FaUserPlus } from 'react-icons/fa';
 import './MenuBar.css';
 
@@ -8,6 +9,16 @@ interface MenuBarProps {
 }
 
 const MenuBar: React.FC<MenuBarProps> = ({ onSignInClick, onSignUpClick }) => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate();
+
+    const handleSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter' && searchTerm.trim() !== '') {
+            navigate(`/search?q=${searchTerm.trim()}`);
+            setSearchTerm(''); // Limpa o campo após a busca
+        }
+    };
+
     return (
         <header className="menu-bar">
             <nav className="menu-nav">
@@ -16,7 +27,7 @@ const MenuBar: React.FC<MenuBarProps> = ({ onSignInClick, onSignUpClick }) => {
                         <FaHome className="menu-icon" />
                         <span>Home</span>
                     </Link>
-                    <Link to="/community" className="menu-button"> {/* Modificado de <a> para <Link> */}
+                    <Link to="/community" className="menu-button">
                         <FaUsers className="menu-icon" />
                         <span>Comunidade</span>
                     </Link>
@@ -29,7 +40,13 @@ const MenuBar: React.FC<MenuBarProps> = ({ onSignInClick, onSignUpClick }) => {
                 <div className="menu-section middle">
                     <div className="search-bar">
                         <FaSearch className="search-icon" />
-                        <input type="text" placeholder="Pesquisar..." />
+                        <input
+                            type="text"
+                            placeholder="Pesquisar..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onKeyDown={handleSearch}
+                        />
                     </div>
                 </div>
 

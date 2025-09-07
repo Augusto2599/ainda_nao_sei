@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import Card from '../../components/Card/Card';
 import { popularCardData, newCardData, movieCardData, seriesCardData, animeCardData } from '../../data/allCardsData';
@@ -21,12 +22,15 @@ const Home = () => {
         ],
     };
 
-    const CardRow = ({ title, data }: { title: string, data: any[] }) => (
+    const CardRow = ({ title, data, category }: { title: string, data: any[], category?: string }) => (
         <div className="card-row">
-            <h2>{title}</h2>
+            <div className="card-row-header">
+                <h2>{title}</h2>
+                {category && <Link to={`/gallery?genre=${category}`} className="see-more-link">Ver Mais</Link>}
+            </div>
             <div className="cards-carousel">
                 <Slider {...settings} infinite={data.length > settings.slidesToShow}>
-                    {data.map((card) => <Card key={card.title} {...card} />)}
+                    {data.map((card) => <Card key={card.id} {...card} />)}
                 </Slider>
             </div>
         </div>
@@ -34,12 +38,12 @@ const Home = () => {
 
     return (
         <>
-            <h1>Home</h1>
+            <h1 className="home-title">Descubra Novos Títulos</h1>
             <CardRow title="Populares" data={popularCardData} />
             <CardRow title="Novos" data={newCardData} />
-            <CardRow title="Filmes" data={movieCardData} />
-            <CardRow title="Séries" data={seriesCardData} />
-            <CardRow title="Animes" data={animeCardData} />
+            <CardRow title="Filmes" data={movieCardData} category="Ação" />
+            <CardRow title="Séries" data={seriesCardData} category="Drama" />
+            <CardRow title="Animes" data={animeCardData} category="Shounen" />
         </>
     );
 }

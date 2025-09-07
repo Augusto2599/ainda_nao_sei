@@ -1,15 +1,25 @@
+import { useState } from 'react';
 import './Post.css';
 import { FaThumbsUp, FaThumbsDown, FaComment } from 'react-icons/fa';
 
-interface PostProps {
+export interface PostProps {
+    id: number;
     author: string;
     time: string;
     content: string;
     likes: number;
     comments: number;
+    onLike: (id: number) => void; // Adicionar a função de callback
 }
 
-const Post: React.FC<PostProps> = ({ author, time, content, likes, comments }) => {
+const Post: React.FC<PostProps> = ({ id, author, time, content, likes, comments, onLike }) => {
+    const [liked, setLiked] = useState(false);
+
+    const handleLikeClick = () => {
+        onLike(id);
+        setLiked(!liked); // Alterna o estado de curtido
+    };
+
     return (
         <div className="post-container">
             <div className="post-header">
@@ -23,7 +33,10 @@ const Post: React.FC<PostProps> = ({ author, time, content, likes, comments }) =
                 <p>{content}</p>
             </div>
             <div className="post-footer">
-                <button className="post-action-button">
+                <button
+                    className={`post-action-button ${liked ? 'liked' : ''}`}
+                    onClick={handleLikeClick}
+                >
                     <FaThumbsUp />
                     <span>{likes} Curtir</span>
                 </button>
