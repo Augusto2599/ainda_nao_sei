@@ -1,7 +1,8 @@
 import './Post.css';
 import { FaThumbsUp, FaThumbsDown, FaComment } from 'react-icons/fa';
 
-interface PostProps {
+export interface PostProps {
+    id: number;
     author: string;
     time: string;
     content: string;

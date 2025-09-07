@@ -1,7 +1,21 @@
+import { useState } from 'react';
 import './CreatePost.css';
 import { FaPhotoVideo, FaListAlt, FaTag } from 'react-icons/fa';
 
-const CreatePost = () => {
+interface CreatePostProps {
+    onPost: (content: string) => void;
+}
+
+const CreatePost: React.FC<CreatePostProps> = ({ onPost }) => {
+    const [content, setContent] = useState('');
+
+    const handleSubmit = () => {
+        if (content.trim()) {
+            onPost(content);
+            setContent(''); // Limpa o campo após a postagem
+        }
+    };
+
     return (
         <div className="create-post-container">
             <div className="create-post-header">
@@ -9,6 +23,8 @@ const CreatePost = () => {
                 <textarea
                     className="create-post-input"
                     placeholder="No que você está pensando?"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                 />
             </div>
             <div className="create-post-actions">
@@ -33,7 +49,7 @@ const CreatePost = () => {
                         </div>
                     </div>
                 </div>
-                <button className="submit-post-button">Publicar</button>
+                <button className="submit-post-button" onClick={handleSubmit}>Publicar</button>
             </div>
         </div>
     );
