@@ -16,10 +16,10 @@ const MenuBar: React.FC<MenuBarProps> = ({ onSignInClick, onSignUpClick }) => {
                         <FaHome className="menu-icon" />
                         <span>Home</span>
                     </Link>
-                    <a href="#" className="menu-button">
+                    <Link to="/community" className="menu-button"> {/* Modificado de <a> para <Link> */}
                         <FaUsers className="menu-icon" />
                         <span>Comunidade</span>
-                    </a>
+                    </Link>
                     <Link to="/gallery" className="menu-button">
                         <FaImages className="menu-icon" />
                         <span>Galeria</span>

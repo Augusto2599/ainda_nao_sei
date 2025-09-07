@@ -5,6 +5,7 @@ import MenuBar from './components/MenuBar/MenuBar';
 import AuthPopup from './components/AuthPopup/AuthPopup';
 import Home from './pages/Home/Home';
 import Gallery from './pages/Gallery/Gallery';
+import Community from './pages/Community/Community'; // Importar a nova página
 
 function App() {
   const [popupMode, setPopupMode] = useState<'signIn' | 'signUp' | null>(null);
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/community" element={<Community />} /> {/* Adicionar a nova rota */}
         </Routes>
       </main>
       <footer className="footer">
