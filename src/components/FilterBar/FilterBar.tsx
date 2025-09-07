@@ -12,17 +12,18 @@ interface FilterValues {
 
 interface FilterBarProps {
     onFilterChange: (filters: FilterValues) => void;
+    initialGenre?: string; // Prop opcional para o gênero inicial
 }
 
-const FilterBar: React.FC<FilterBarProps> = ({ onFilterChange }) => {
+const FilterBar: React.FC<FilterBarProps> = ({ onFilterChange, initialGenre = 'all' }) => {
     const [filters, setFilters] = useState<FilterValues>({
-        genre: 'all',
+        genre: initialGenre, // Usar o valor inicial
         author: 'all',
         country: 'all',
         year: 'all',
         rating: 'all',
     });
-    
+
     useEffect(() => {
         onFilterChange(filters);
     }, [filters, onFilterChange]);
@@ -66,16 +67,16 @@ const FilterBar: React.FC<FilterBarProps> = ({ onFilterChange }) => {
                 <label htmlFor="year">Ano de Lançamento</label>
                 <select id="year" name="year" value={filters.year} onChange={handleChange}>
                     <option value="all">Todos</option>
-                    {filterOptions.years.map(y => <option key={y} value={y}>{y}</option>)}
+                    {filterOptions.years.map(y => <option key={String(y)} value={String(y)}>{y}</option>)}
                 </select>
             </div>
-            
-            {/* Filtro de Rating - AGORA TAMBÉM É UM SELECT */}
+
+            {/* Filtro de Rating */}
             <div className="filter-group">
                 <label htmlFor="rating">Rating</label>
                 <select id="rating" name="rating" value={filters.rating} onChange={handleChange}>
                     <option value="all">Todos</option>
-                    {filterOptions.ratings.map(r => <option key={r} value={r}>A partir de {r}</option>)}
+                    {filterOptions.ratings.map(r => <option key={r} value={r}>A partir de {r}+</option>)}
                 </select>
             </div>
         </div>

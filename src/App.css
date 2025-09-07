@@ -44,7 +44,7 @@
   overflow: visible;
 }
 
-.slick-slide > div {
+.slick-slide>div {
   padding: 0 10px;
 }
 
@@ -64,6 +64,7 @@
 .slick-prev {
   left: -5px;
 }
+
 .slick-next {
   right: -5px;
 }
@@ -125,4 +126,44 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Adicione estas novas regras ao final do arquivo */
+
+.home-title {
+  margin-bottom: 2rem;
+}
+
+.card-row-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  margin-bottom: 1rem;
+}
+
+.card-row-header h2 {
+  font-size: 1.2em;
+  text-align: left;
+  margin: 0;
+}
+
+.see-more-link {
+  color: #8a91ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.see-more-link:hover {
+  color: #646cff;
+  text-decoration: underline;
+}
+
+/* Garanta que as regras antigas sejam sobrescritas ou removidas se necessário */
+.card-row h2 {
+  margin-bottom: 0;
+  /* Removido para o novo header */
+  padding: 0;
+  /* Removido para o novo header */
 }
