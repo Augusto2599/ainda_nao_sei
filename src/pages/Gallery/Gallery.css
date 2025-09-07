@@ -1,0 +1,20 @@
+.gallery-container {
+    padding-top: 20px;
+    padding-bottom: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 20px 40px;
+    justify-items: center;
+}
+
+.no-results-message {
+    grid-column: 1 / -1; /* Ocupa todas as colunas da grade */
+    text-align: center;
+    color: #999;
+    font-size: 1.2em;
+    margin-top: 40px;
+}
