@@ -1,0 +1,142 @@
+.filter-bar-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo para os popups não desalinharem */
+    gap: 2rem;
+    padding: 1.5rem 2.5rem;
+    background-color: #2f2f2f;
+    border-bottom: 1px solid #3a3a3a;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 180px;
+    position: relative; /* Contexto de posicionamento para o popup */
+}
+
+.filter-group label {
+    font-size: 0.9em;
+    color: #ccc;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* Estilos base para TODOS os botões de filtro (select e button) */
+.filter-group select,
+.filter-range-button {
+    padding: 0.2em 1em;
+    border-radius: 8px;
+    border: 1px solid #4a4a4a;
+    background-color: #1a1a1a;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 0.95em;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    height: 38px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Efeito de HOVER unificado */
+.filter-group select:hover,
+.filter-range-button:hover {
+    border-color: #646cff;
+    box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.3);
+}
+
+/* Efeito de FOCO unificado */
+.filter-group select:focus,
+.filter-range-button:focus,
+.filter-range-button:focus-visible {
+    outline: none;
+    border-color: #646cff;
+    box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.3);
+}
+
+/* Estilo específico para a seta do SELECT */
+.filter-group select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23cccccc' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 1em 1em;
+    padding-right: 2.5em; /* Espaço para a seta */
+}
+
+.filter-range-button {
+    display: flex; /* Para centralizar o texto se necessário */
+    align-items: center;
+}
+
+/* O popup que contém o slider */
+.range-slider-popup {
+    position: absolute;
+    top: calc(100% + 8px); /* Aparece abaixo do botão com um espaçamento */
+    left: 0;
+    width: 100%;
+    background-color: #252527;
+    border: 1px solid #4a4a4a;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilização do input[range] dentro do popup */
+.range-slider-popup input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #444;
+    border-radius: 3px;
+    outline: none;
+    cursor: grab;
+}
+
+.range-slider-popup input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #646cff;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    margin-top: -6px; /* Alinhamento vertical do thumb */
+}
+
+.range-slider-popup input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #646cff;
+    border-radius: 50%;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.range-slider-popup input[type="range"]::-webkit-slider-thumb:hover {
+    background: #535bf2;
+}
+
+.range-slider-popup input[type="range"]::-moz-range-thumb:hover {
+    background: #535bf2;
+}
+
+.range-slider-popup input[type="range"]:active {
+    cursor: grabbing;
+}

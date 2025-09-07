@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { FaHome, FaUsers, FaImages, FaSearch, FaUserCircle, FaUserPlus } from 'react-icons/fa';
 import './MenuBar.css';
 
@@ -11,18 +12,18 @@ const MenuBar: React.FC<MenuBarProps> = ({ onSignInClick, onSignUpClick }) => {
         <header className="menu-bar">
             <nav className="menu-nav">
                 <div className="menu-section left">
-                    <a href="/index.html" className="menu-button">
+                    <Link to="/" className="menu-button">
                         <FaHome className="menu-icon" />
                         <span>Home</span>
-                    </a>
+                    </Link>
                     <a href="#" className="menu-button">
                         <FaUsers className="menu-icon" />
                         <span>Comunidade</span>
                     </a>
-                    <a href="#" className="menu-button">
+                    <Link to="/gallery" className="menu-button">
                         <FaImages className="menu-icon" />
                         <span>Galeria</span>
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="menu-section middle">
