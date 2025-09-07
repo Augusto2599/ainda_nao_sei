@@ -1,0 +1,141 @@
+.create-post-container {
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.create-post-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.create-post-input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 1.1em;
+    font-family: inherit;
+    resize: none;
+    min-height: 60px;
+}
+
+.create-post-input:focus {
+    outline: none;
+}
+
+.create-post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+}
+
+.action-buttons-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 0.9em;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.action-button:hover {
+    background-color: #3a3a3a;
+}
+
+.action-icon {
+    font-size: 1.2em;
+}
+
+/* Estilos para o botão de marcar e o menu dropdown */
+.tag-button-container {
+    position: relative;
+}
+
+.tag-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.tag-button-container:hover {
+    background-color: #3a3a3a;
+}
+
+.tag-options {
+    display: none;
+    position: absolute;
+    top: 100%; /* ALTERAÇÃO: Posiciona o menu abaixo do botão */
+    left: 0;
+    background-color: #3a3a3a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    margin-top: 8px; /* ALTERAÇÃO: Espaço entre o botão e o menu */
+}
+
+.tag-button-container:hover .tag-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tag-options button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.87);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-align: left;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.tag-options button:hover {
+    background-color: #4f4f4f;
+}
+
+.submit-post-button {
+    background-color: #646cff;
+    color: #fff;
+    border: none;
+    padding: 0.6em 1.2em;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+
+.submit-post-button:hover {
+    background-color: #535bf2;
+}

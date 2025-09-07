@@ -1,0 +1,15 @@
+.community-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 40px;
+    padding-top: 100px;
+}
+
+.community-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 680px;
+}
