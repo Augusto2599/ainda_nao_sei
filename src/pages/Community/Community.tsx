@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import CreatePost from '../../components/CreatePost/CreatePost';
 import Post, { type PostProps } from '../../components/Post/Post';
-import SideBar from '../../components/SideBar/SideBar';
+import SideBar, { type SortType } from '../../components/SideBar/SideBar';
 import './Community.css';
 
-const initialPosts: Omit<PostProps, 'onLike'>[] = [
+// Removendo 'onLike' da tipagem inicial para simplificar
+type PostData = Omit<PostProps, 'onLike'>;
+
+const initialPosts: PostData[] = [
     {
         id: 3,
         author: 'Carlos',
@@ -32,10 +35,11 @@ const initialPosts: Omit<PostProps, 'onLike'>[] = [
 ];
 
 const Community = () => {
-    const [posts, setPosts] = useState(initialPosts);
+    const [posts, setPosts] = useState<PostData[]>(initialPosts);
+    const [activeSort, setActiveSort] = useState<SortType>('recentes');
 
     const handleCreatePost = (content: string) => {
-        const newPost = {
+        const newPost: PostData = {
             id: Date.now(),
             author: 'Usuário Atual',
             time: 'Agora',
@@ -47,25 +51,32 @@ const Community = () => {
     };
 
     const handleLikePost = (postId: number) => {
-        setPosts(posts.map(post => {
-            if (post.id === postId) {
-                // Simplesmente incrementa. Uma implementação real poderia verificar se já foi curtido.
-                return { ...post, likes: post.likes + 1 };
-            }
-            return post;
-        }));
+        setPosts(posts.map(post =>
+            post.id === postId ? { ...post, likes: post.likes + 1 } : post
+        ));
     };
+
+    // Ordena os posts com base no filtro ativo
+    const sortedPosts = useMemo(() => {
+        return [...posts].sort((a, b) => {
+            if (activeSort === 'curtidos') {
+                return b.likes - a.likes; // Mais curtidos primeiro
+            }
+            // 'recentes' é o padrão
+            return b.id - a.id; // Posts mais novos (maior id) primeiro
+        });
+    }, [posts, activeSort]);
 
     return (
         <div className="community-container">
-            <SideBar />
+            <SideBar activeSort={activeSort} onSortChange={setActiveSort} />
             <div className="community-feed">
                 <CreatePost onPost={handleCreatePost} />
-                {posts.map((post) => (
+                {sortedPosts.map((post) => (
                     <Post
                         key={post.id}
                         {...post}
-                        onLike={handleLikePost} // Passa a função para o componente Post
+                        onLike={handleLikePost}
                     />
                 ))}
             </div>
